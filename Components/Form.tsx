@@ -13,7 +13,7 @@ import { gender } from "../utils/types/gender";
 import { session, year } from "../utils/types/session";
 import { rank } from "../utils/types/rank";
 
-const Form: React.FC = () => {
+const Form = () => {
   const navigation = useNavigation();
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
