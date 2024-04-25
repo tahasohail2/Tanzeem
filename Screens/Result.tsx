@@ -94,6 +94,9 @@ const Results = () => {
           25/04/2024 17:44:52 PM
         </Text>
       </View>
+      <View style={styles.controllerExams}>
+        <Text style={styles.controllerText}>Controller Exams</Text>
+      </View>
       <View style={styles.button}>
         <Button title="Download Result" color="#99D1AA" onPress={() => {}} />
       </View>
@@ -131,22 +134,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 20,
   },
-  // card: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   backgroundColor: "#FFFFFF",
-  //   width: "100%",
-  //   height: "100%",
-  //   borderRadius: 10,
-  //   shadowColor: "#000",
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: 2,
-  //   },
-  //   shadowOpacity: 0.25,
-  //   shadowRadius: 3.84,
-  //   elevation: 5,
-  // },
+  controllerExams: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+    marginBottom: 20,
+  },
+  controllerText: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
 });
 
 export default Results;
