@@ -3,10 +3,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Result from "../Screens/Result";
 import Home from "../Screens/Home";
+import { useTranslator } from "../utils/localization/TranslatorContext";
 
 const Stack = createStackNavigator();
 
 const Navigation = () => {
+  const { i18n } = useTranslator();
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -15,7 +17,14 @@ const Navigation = () => {
           name="Home"
           component={Home}
         />
-        <Stack.Screen name="Result" component={Result} />
+        <Stack.Screen
+          options={{
+            title: i18n.t("result"),
+            headerTitleStyle: { display: "none" },
+          }}
+          name="Result"
+          component={Result}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

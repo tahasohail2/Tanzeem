@@ -1,53 +1,59 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { I18nManager, StyleSheet, Text, View } from "react-native";
+import { useTranslator } from "../utils/localization/TranslatorContext";
 
-const ResultHeader = () => {
+const ResultHeader = ({ data }) => {
+  const { i18n } = useTranslator();
+  const isRTL = i18n.locale === "ur";
   return (
     <View>
-      <Text style={styles.annualText}>Annual Examination 2024</Text>
+      <Text style={styles.annualText}>{i18n.t("AnnualExamination2024")}</Text>
       <View style={styles.rankStyle}>
         <Text style={styles.rankText}>
-          Rank: Al-Shahadat-ul-Tanwiyyah General Year 1 (Matriculation)
+          {i18n.t("rankAlShahadatulTanwiyyahGeneralYear1")}
         </Text>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.bold}>Student name: </Text>
-        <Text style={styles.values}> Muhammad Taha Sohail </Text>
+      <View style={[styles.row, isRTL && styles.rtlRow]}>
+        <Text style={styles.bold}>{i18n.t("studentName")}: </Text>
+        <Text style={styles.values}> {data.studentInfo.studentName} </Text>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.bold}>Fathers name: </Text>
-        <Text style={styles.values}>Sohail Ahmed Mujahid </Text>
+      <View style={[styles.row, isRTL && styles.rtlRow]}>
+        <Text style={styles.bold}>{i18n.t("fatherName")}: </Text>
+        <Text style={styles.values}> {data.studentInfo.fatherName} </Text>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.bold}>Date of birth: </Text>
-        <Text style={styles.values}>17-01-1999 </Text>
+      <View style={[styles.row, isRTL && styles.rtlRow]}>
+        <Text style={styles.bold}>{i18n.t("dateOfBirth")}: </Text>
+        <Text style={styles.values}> {data.studentInfo.dob} </Text>
       </View>
-      <View style={styles.row}>
-        <Text style={styles.bold}>Gender: </Text>
-        <Text style={styles.values}>Male </Text>
+      <View style={[styles.row, isRTL && styles.rtlRow]}>
+        <Text style={styles.bold}>{i18n.t("gender")}: </Text>
+        <Text style={styles.values}> {data.studentInfo.gender} </Text>
       </View>
       <View>
-        <Text style={styles.bold}>Name of institution: </Text>
+        <Text style={styles.bold}>{i18n.t("nameOfInstitution")}: </Text>
         <Text style={[styles.values, { marginBottom: 10, marginTop: 5 }]}>
-          Jamia Muhammadia Geelania Ejaz Uloom Jiwanwala Ponta Shujaabad
-          District Multan (13052)
+          {data.institutionName}
         </Text>
       </View>
       <View style={styles.rollNoRegistrationNo}>
-        <View style={styles.rollNo}>
-          <View style={[styles.cell, styles.borderRight]}>
-            <Text style={styles.bold}>Roll No:</Text>
+        <View style={[styles.rollNoRow, isRTL && styles.rtlRow]}>
+          <View
+            style={[styles.cell, isRTL ? styles.borderReverse : styles.border]}
+          >
+            <Text style={styles.bold}>{i18n.t("rollNo")}:</Text>
           </View>
           <View style={styles.cell}>
-            <Text style={styles.values}>121212</Text>
+            <Text style={styles.values}>{data.studentInfo.rollNo}</Text>
           </View>
         </View>
-        <View style={styles.regNo}>
-          <View style={[styles.cell, styles.borderRight]}>
-            <Text style={styles.bold}>Registration No:</Text>
+        <View style={[styles.regNoRow, isRTL && styles.rtlRow]}>
+          <View
+            style={[styles.cell, isRTL ? styles.borderReverse : styles.border]}
+          >
+            <Text style={styles.bold}>{i18n.t("registrationNo")}:</Text>
           </View>
           <View style={styles.cell}>
-            <Text style={styles.values}>232312</Text>
+            <Text style={styles.values}>{data.studentInfo.registrationNo}</Text>
           </View>
         </View>
       </View>
@@ -83,6 +89,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
   },
+  rtlRow: {
+    flexDirection: "row-reverse", // Reverse the row direction for RTL languages
+  },
   bold: {
     fontWeight: "bold",
     fontSize: 16,
@@ -96,12 +105,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 10,
   },
-  rollNo: {
+  rollNoRow: {
     flexDirection: "row",
     borderBottomWidth: 1,
     borderBottomColor: "#000",
   },
-  regNo: {
+  regNoRow: {
     flexDirection: "row",
     borderBottomColor: "#000",
   },
@@ -110,9 +119,13 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 5,
   },
-  borderRight: {
+  border: {
     borderRightWidth: 1,
     borderRightColor: "#000",
+  },
+  borderReverse: {
+    borderLeftWidth: 1,
+    borderLeftColor: "#000",
   },
 });
 export default ResultHeader;
