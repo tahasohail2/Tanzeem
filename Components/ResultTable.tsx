@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import { StyleSheet, Text, View } from "react-native";
 import { useTranslator } from "../utils/localization/TranslatorContext";
 
@@ -35,7 +39,7 @@ const ReactTable = ({ data }) => {
         <Text style={styles.headerText}>{data.obtainedMarks}</Text>
         <Text style={styles.headerText}>{data.overallResult}</Text>
       </View>
-      <View style={[styles.row, isRTL && styles.rowReverse]}>
+      <View style={[styles.lastRow, isRTL && styles.rowReverse]}>
         <Text style={styles.cell}></Text>
         <Text style={[styles.headerText, styles.subjects]}>
           {i18n.t("result")}
@@ -54,6 +58,9 @@ const styles = StyleSheet.create({
     borderColor: "#000",
     borderRadius: 5,
   },
+  lastRow: {
+    flexDirection: "row",
+  },
   row: {
     flexDirection: "row",
     borderBottomWidth: 1,
@@ -67,15 +74,16 @@ const styles = StyleSheet.create({
   },
   headerText: {
     flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(1),
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "Montserrat-Bold",
   },
   cell: {
     flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    fontFamily: "Montserrat-Regular",
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(1),
     textAlign: "center",
   },
   subjects: {

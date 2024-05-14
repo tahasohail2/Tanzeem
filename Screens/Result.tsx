@@ -7,7 +7,12 @@ import {
   Image,
   ScrollView,
   Button,
+  TouchableOpacity,
 } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import ResultTable from "../Components/ResultTable";
 import ResultHeader from "../Components/ResultHeader";
 import { useTranslator } from "../utils/localization/TranslatorContext";
@@ -95,9 +100,7 @@ const Results = ({ route }) => {
         <ResultHeader data={responseData} />
         <ResultTable data={responseData} />
         <View style={[styles.noteContainer, isRTL && styles.rowReverse]}>
-          <Text style={[styles.noteText, { fontWeight: "bold" }]}>
-            {i18n.t("note")}:{" "}
-          </Text>
+          <Text style={styles.noteText}>{i18n.t("note")}: </Text>
           <Text style={styles.noteText}>{i18n.t("noteDesc")}</Text>
         </View>
         <View
@@ -106,12 +109,8 @@ const Results = ({ route }) => {
             isRTL && styles.rowReverse,
           ]}
         >
-          <Text style={[styles.printText, { fontWeight: "bold" }]}>
-            {i18n.t("websitePrintResult")}:{" "}
-          </Text>
-          <Text style={[styles.printText, { fontWeight: "bold" }]}>
-            25/04/2024 17:44:52 PM
-          </Text>
+          <Text style={styles.printText}>{i18n.t("websitePrintResult")}: </Text>
+          <Text style={styles.printText}>25/04/2024 17:44:52 PM</Text>
         </View>
         <View
           style={[
@@ -121,13 +120,10 @@ const Results = ({ route }) => {
         >
           <Text style={styles.controllerText}>{i18n.t("controllerExams")}</Text>
         </View>
-        <View style={styles.button}>
-          <Button
-            title={i18n.t("downloadResult")}
-            color="#99D1AA"
-            // onPress={() => ()}
-          />
-        </View>
+
+        {/* <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>{i18n.t("downloadResult")}</Text>
+        </TouchableOpacity> */}
       </ScrollView>
     </View>
   );
@@ -148,46 +144,59 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    padding: 10,
+    padding: hp(1.5),
   },
   image: {
     width: "100%",
   },
   noteContainer: {
-    marginTop: 20,
     flexDirection: "row",
+    marginTop: hp(2),
+    flexWrap: "wrap",
+    marginHorizontal: wp(2),
   },
   rowReverse: {
     flexDirection: "row-reverse",
   },
   noteText: {
-    fontSize: 16,
+    fontFamily: "Montserrat-BoldItalic",
+    fontSize: hp(2),
   },
   websitePrintResultContainer: {
-    gap: 5,
-    marginTop: 10,
-    marginBottom: 20,
     flexDirection: "row",
+    alignItems: "center",
+    gap: wp(1),
+    marginTop: hp(1),
+    marginHorizontal: wp(2),
+    marginBottom: hp(2),
   },
   printText: {
-    fontSize: 13,
+    fontFamily: "Montserrat-BoldItalic",
+    fontSize: hp(1.5),
   },
   button: {
-    width: "100%",
-    paddingHorizontal: 20,
-    marginBottom: 20,
+    backgroundColor: "#99D1AA",
+    padding: wp(1.5),
+    borderRadius: 5,
+    marginBottom: hp(5),
+  },
+  buttonText: {
+    color: "#FFFFFF",
+    fontSize: hp(2),
+    fontFamily: "Montserrat-Bold",
+    textAlign: "center",
   },
   controllerExams: {
     flexDirection: "column",
     alignItems: "flex-end",
-    marginBottom: 20,
+    marginBottom: hp(3),
   },
   controllerExamsReverse: {
     alignItems: "flex-start",
   },
   controllerText: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: hp(2),
+    fontFamily: "Montserrat-Bold",
   },
 });
 

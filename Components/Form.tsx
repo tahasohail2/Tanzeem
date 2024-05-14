@@ -7,13 +7,18 @@ import {
   TouchableOpacity,
   ScrollView,
   Button,
+  ActivityIndicator,
 } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import { Dropdown } from "react-native-element-dropdown";
 import { useTranslator } from "../utils/localization/TranslatorContext";
 import { Gender, Rank, Session, Year } from "../utils/types/types";
 import CustomAlert from "./CustomAlert";
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, loading }) => {
   const { i18n } = useTranslator();
   const [selectedGender, setSelectedGender] = useState<string | null>(null);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
@@ -147,8 +152,16 @@ const Form = ({ onSubmit }) => {
         />
       </View>
       <View>
-        <TouchableOpacity style={styles.button} onPress={handleFormSubmit}>
-          <Text style={styles.buttonText}>{i18n.t("result")}</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleFormSubmit}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator size="small" color="#fff" />
+          ) : (
+            <Text style={styles.buttonText}>{i18n.t("result")}</Text>
+          )}
         </TouchableOpacity>
       </View>
       <CustomAlert
@@ -165,7 +178,7 @@ export default Form;
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(2),
   },
   rowContainer: {
     flexDirection: "row",
@@ -185,30 +198,33 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   labelText: {
-    fontSize: 15,
-    fontWeight: "bold",
-    marginBottom: 10,
+    fontSize: hp(2),
+    fontFamily: "Montserrat-Bold",
+    marginBottom: hp(1),
   },
   placeholder: {
     color: "gray",
     fontStyle: "italic",
   },
   textInput: {
-    height: 50,
+    fontFamily: "Montserrat-BoldItalic",
+    height: hp(5),
     borderColor: "gray",
     borderWidth: 0.5,
     borderRadius: 8,
-    paddingHorizontal: 8,
-    marginBottom: 16,
+    paddingHorizontal: wp(2),
+    marginBottom: hp(2),
   },
   button: {
     backgroundColor: "blue",
-    padding: 10,
+    padding: hp(1.5),
     borderRadius: 8,
     alignItems: "center",
+    marginBottom: hp(1),
   },
   buttonText: {
     color: "white",
-    fontSize: 16,
+    fontFamily: "Montserrat-Bold",
+    fontSize: hp(2),
   },
 });

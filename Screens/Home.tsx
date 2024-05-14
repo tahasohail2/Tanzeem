@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 import Form from "../Components/Form";
 import { Dropdown } from "react-native-element-dropdown";
 import { useTranslator } from "../utils/localization/TranslatorContext";
@@ -11,6 +15,8 @@ function Home() {
   const navigation = useNavigation();
   const { i18n, changeLocale } = useTranslator();
   const [selectedLanguage, setSelectedLanguage] = useState(i18n.locale);
+  const [loading, setLoading] = useState(false);
+
   const handleLanguageChange = (language: any) => {
     setSelectedLanguage(language);
     changeLocale(language);
@@ -18,15 +24,18 @@ function Home() {
 
   const handleSubmit = async (registrationNo: any, rollNo: any) => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `${baseURL}studentData?registrationNo=${registrationNo}&rollNo=${rollNo}`
       );
-      // console.log(response.data);
       navigation.navigate("Result", { responseData: response.data });
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <View style={styles.backgroundContainer}>
       <Image
@@ -68,7 +77,7 @@ function Home() {
                 <Text style={styles.formText}>{i18n.t("formText")}</Text>
               </View>
 
-              <Form onSubmit={handleSubmit} />
+              <Form onSubmit={handleSubmit} loading={loading} />
             </View>
           </View>
         </View>
@@ -81,14 +90,14 @@ export default Home;
 const styles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: wp(100),
+    height: hp(100),
     position: "absolute",
   },
   backgroundImage: {
     flex: 1,
-    width: "100%",
-    height: "100%",
+    width: wp(100),
+    height: hp(100),
     position: "absolute",
   },
   container: {
@@ -97,53 +106,53 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   insideContainer: {
-    width: "100%",
-    marginTop: 70,
+    width: wp(100),
+    marginTop: hp(5),
   },
   image: {
-    width: "100%",
-    marginTop: 20,
+    width: wp(100),
+    marginTop: hp(2),
   },
   dropdownContainer: {
     alignItems: "flex-end",
-    paddingHorizontal: 16,
+    paddingHorizontal: wp(2),
   },
   dropdown: {
-    width: "30%",
+    width: hp(15),
     borderWidth: 1,
     borderRadius: 8,
-    paddingHorizontal: 8,
+    paddingHorizontal: wp(2),
   },
   formHeading: {
-    fontSize: 20,
+    fontSize: hp(2.5),
     textAlign: "center",
     color: "#ffffff",
-    fontWeight: "bold",
+    fontFamily: "Montserrat-Bold",
   },
   formHeadingContainer: {
     backgroundColor: "#207EB5",
-    padding: 20,
+    padding: hp(2),
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,
   },
   formContainer: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingVertical: 20,
+    paddingLeft: wp(2),
+    paddingRight: wp(2),
+    paddingVertical: hp(1),
   },
   formText: {
-    fontWeight: "bold",
-    fontSize: 16,
+    fontFamily: "Montserrat-Bold",
+    fontSize: hp(2),
     color: "#000000",
-    textAlign: "center",
-    marginBottom: 20,
+    textAlign: "justify",
+    marginBottom: hp(2),
   },
   form: {
-    marginTop: 10,
+    alignSelf: "center",
+    marginTop: hp(2),
     backgroundColor: "#ffffff",
     borderRadius: 12,
-    marginHorizontal: 16,
-    // padding: 20,
+    width: wp(90),
     elevation: 4,
     shadowColor: "#000000",
     shadowOffset: {

@@ -1,6 +1,10 @@
 import React from "react";
 import { I18nManager, StyleSheet, Text, View } from "react-native";
 import { useTranslator } from "../utils/localization/TranslatorContext";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 const ResultHeader = ({ data }) => {
   const { i18n } = useTranslator();
@@ -29,11 +33,9 @@ const ResultHeader = ({ data }) => {
         <Text style={styles.bold}>{i18n.t("gender")}: </Text>
         <Text style={styles.values}> {data.studentInfo.gender} </Text>
       </View>
-      <View>
+      <View style={{ marginBottom: hp(1) }}>
         <Text style={styles.bold}>{i18n.t("nameOfInstitution")}: </Text>
-        <Text style={[styles.values, { marginBottom: 10, marginTop: 5 }]}>
-          {data.institutionName}
-        </Text>
+        <Text style={[styles.values]}>{data.institutionName}</Text>
       </View>
       <View style={styles.rollNoRegistrationNo}>
         <View style={[styles.rollNoRow, isRTL && styles.rtlRow]}>
@@ -64,22 +66,23 @@ const ResultHeader = ({ data }) => {
 const styles = StyleSheet.create({
   container: {},
   annualText: {
-    fontSize: 20,
-    fontWeight: "bold",
+    fontSize: hp(2.5),
     textAlign: "center",
-    marginBottom: 10,
+    fontFamily: "Montserrat-Bold",
+    // fontWeight: "bold",
+    marginBottom: hp(1),
     color: "#000000",
   },
   rankStyle: {
     borderRadius: 10,
     borderWidth: 2,
     borderColor: "black",
-    padding: 5,
-    marginBottom: 10,
+    padding: wp(1),
+    marginBottom: hp(1),
   },
   rankText: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: hp(2),
+    fontFamily: "Montserrat-Bold",
     textAlign: "center",
     color: "#000000",
   },
@@ -87,23 +90,24 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "flex-start",
     alignItems: "center",
-    marginBottom: 10,
+    marginBottom: hp(1),
   },
   rtlRow: {
     flexDirection: "row-reverse", // Reverse the row direction for RTL languages
   },
   bold: {
-    fontWeight: "bold",
-    fontSize: 16,
+    fontFamily: "Montserrat-Bold",
+    fontSize: hp(2),
   },
   values: {
-    fontSize: 16,
+    fontFamily: "Montserrat-Regular",
+    fontSize: hp(2),
   },
   rollNoRegistrationNo: {
     borderWidth: 1,
     borderColor: "#000",
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: hp(1),
   },
   rollNoRow: {
     flexDirection: "row",
@@ -116,8 +120,8 @@ const styles = StyleSheet.create({
   },
   cell: {
     flex: 1,
-    paddingVertical: 10,
-    paddingHorizontal: 5,
+    paddingVertical: hp(1),
+    paddingHorizontal: wp(2),
   },
   border: {
     borderRightWidth: 1,
