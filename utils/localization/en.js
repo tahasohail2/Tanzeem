@@ -1,4 +1,5 @@
 export default {
+  TanzeemUlMadaris: "Tanzeem ul Madaris",
   selectionOfGender: "Selection of gender",
   selectionOfSession: "Selection of session",
   male: "Male",
@@ -53,4 +54,12 @@ export default {
     'Enter valid registration and roll number to check the result. And click on the "Result" button at the bottom',
   fillFieldsAlert: "Please fill out all fields.",
   OK: "OK",
+  language: "Language",
+  nazamUlMadaris: "Nazm al-Madaris",
+  contact: "Contact",
+  provincialOffices: "Provincial offices",
+  downloads: "Downloads",
+  results: "Results",
+  background: "Background",
+  AimsAndObjectives: "Aims and Objectives",
 };

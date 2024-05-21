@@ -3,6 +3,8 @@ import Navigation from "./Navigators/Navigator";
 import { TranslatorProvider } from "./utils/localization/TranslatorContext";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { Provider } from "react-redux";
+import { store } from "./redux/store/store";
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -39,8 +41,10 @@ export default function App() {
   }
 
   return (
-    <TranslatorProvider>
-      <Navigation />
-    </TranslatorProvider>
+    <Provider store={store}>
+      <TranslatorProvider>
+        <Navigation />
+      </TranslatorProvider>
+    </Provider>
   );
 }

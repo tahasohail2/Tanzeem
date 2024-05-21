@@ -1,4 +1,5 @@
 export default {
+  TanzeemUlMadaris: "تنظیم المدارس",
   selectionOfGender: "جنس کا انتخاب",
   selectionOfSession: "سیشن کا انتخاب",
   male: "مرد",
@@ -53,4 +54,12 @@ export default {
     'نتیجہ دیکھنے کے لیے درست رجسٹریشن و رول نمبر درج کریں۔ اور نچلی جانب "نتیجہ" والے بٹن پہ کلک کریں',
   fillFieldsAlert: "براہ کرم تمام فیلڈز کو پُر کریں۔",
   OK: "ٹھیک ہے",
+  language: "زبان",
+  nazamUlMadaris: "نظم المدارس",
+  contact: "رابطہ",
+  provincialOffices: "صوبائی دفاتر",
+  downloads: "ڈاؤن لوڈز",
+  results: "نتائج",
+  background: "پس منظر",
+  AimsAndObjectives: "اغراض ومقاصد",
 };
