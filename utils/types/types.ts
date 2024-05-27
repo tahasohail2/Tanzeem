@@ -1,16 +1,13 @@
-export interface Gender {
-  label: string;
-  value: string;
+interface CarouselData {
+  image: any;
 }
-export interface Session {
-  label: string;
-  value: string;
+interface CarouselComponentProps<T> {
+  data: T[];
+  renderItem: ({ item }: { item: T }) => React.ReactElement;
 }
-export interface Year {
-  label: string;
-  value: string;
-}
-export interface Rank {
-  label: string;
-  value: string;
+
+interface CarouselItemProps {
+  item: {
+    image: any;
+  };
 }
