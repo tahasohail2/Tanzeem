@@ -62,4 +62,12 @@ export default {
   results: "نتائج",
   background: "پس منظر",
   AimsAndObjectives: "اغراض ومقاصد",
+  signInForm: "سائن ان فارم",
+  User: "یوزر",
+  Password: "پاسورڈ",
+  UserName: "یوزر کا نام",
+  SignIn: "سائن ان",
+  Admin: "ایڈمن",
+  incorrectCredentials: "یوزر کا نام اور پاس ورڈ غلط ہے۔",
+  loginSuccessMsg: 'کامیابی"، "آپ کامیابی سے لاگ ان ہو گئے ہیں!',
 };

@@ -4,7 +4,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import Form from "../Components/Form";
+import ShowResultForm from "../Components/ShowResultForm";
 import { Dropdown } from "react-native-element-dropdown";
 import { useTranslator } from "../utils/localization/TranslatorContext";
 import { useNavigation } from "@react-navigation/native";
@@ -62,7 +62,7 @@ function Home() {
                 <Text style={styles.formText}>{i18n.t("formText")}</Text>
               </View>
 
-              <Form onSubmit={handleSubmit} loading={loading} />
+              <ShowResultForm onSubmit={handleSubmit} loading={loading} />
             </View>
           </View>
         </View>

@@ -15,15 +15,12 @@ import {
 } from "react-native-responsive-screen";
 import { Dropdown } from "react-native-element-dropdown";
 import { useTranslator } from "../utils/localization/TranslatorContext";
-import { Gender, Rank, Session, Year } from "../utils/types/types";
+
 import CustomAlert from "./CustomAlert";
 
-const Form = ({ onSubmit, loading }) => {
+const ShowResultForm = ({ onSubmit, loading }) => {
   const { i18n } = useTranslator();
-  const [selectedGender, setSelectedGender] = useState<string | null>(null);
-  const [selectedSession, setSelectedSession] = useState<string | null>(null);
-  const [selectedYear, setSelectedYear] = useState<string | null>(null);
-  const [selectedRank, setSelectedRank] = useState<string | null>(null);
+  const isRTL = i18n.locale === "ur";
   const [registrationNo, setRegistrationNo] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
@@ -39,40 +36,6 @@ const Form = ({ onSubmit, loading }) => {
   const hideAlert = () => {
     setAlertVisible(false);
   };
-
-  const genderOptions: Gender[] = [
-    { label: i18n.t("male"), value: "male" },
-    { label: i18n.t("female"), value: "female" },
-  ];
-  const rankOptions: Rank[] = [
-    { label: i18n.t("tajweedAlQuran"), value: "tajweed-al-quran" },
-    { label: i18n.t("publicFirst"), value: "public-first" },
-    { label: i18n.t("publicSecond"), value: "public-second" },
-    { label: i18n.t("feature_1"), value: "feature-1" },
-    { label: i18n.t("feature_2"), value: "feature-2" },
-    { label: i18n.t("aliya_1"), value: "aliya-1" },
-    { label: i18n.t("aliya_II"), value: "alia-ii" },
-    { label: i18n.t("world_I"), value: "world-i" },
-    { label: i18n.t("world_II"), value: "world-ii" },
-    { label: i18n.t("medium"), value: "medium" },
-    { label: i18n.t("takhsal_Per_Fiqh_I"), value: "takhsal-per-fiqh-i" },
-    { label: i18n.t("takhsal_Per_Fiqh_II"), value: "takhsal-per-fiqh-ii" },
-    {
-      label: i18n.t("specializationEntranceTest"),
-      value: "specialization-entrance-test",
-    },
-  ];
-  const sessionOptions: Session[] = [
-    { label: i18n.t("final"), value: "final" },
-    { label: i18n.t("secondFinal"), value: "secondFinal" },
-    { label: i18n.t("temporal"), value: "temporal" },
-  ];
-
-  const yearOptions: Year[] = [
-    { label: "2024", value: "2024" },
-    { label: "2023", value: "2023" },
-    { label: "2022", value: "2022" },
-  ];
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -134,7 +97,7 @@ const Form = ({ onSubmit, loading }) => {
       <View>
         <Text style={styles.labelText}>{i18n.t("registrationNo")}:</Text>
         <TextInput
-          style={styles.textInput}
+          style={[styles.textInput, { textAlign: isRTL ? "right" : "left" }]}
           placeholder={i18n.t("registrationNoPlaceholder")}
           value={registrationNo}
           onChangeText={(text) => setRegistrationNo(text)}
@@ -144,7 +107,7 @@ const Form = ({ onSubmit, loading }) => {
       <View>
         <Text style={styles.labelText}>{i18n.t("rollNo")}:</Text>
         <TextInput
-          style={styles.textInput}
+          style={[styles.textInput, { textAlign: isRTL ? "right" : "left" }]}
           placeholder={i18n.t("enterYourRollNo")}
           value={rollNo}
           onChangeText={(text) => setRollNo(text)}
@@ -173,7 +136,7 @@ const Form = ({ onSubmit, loading }) => {
   );
 };
 
-export default Form;
+export default ShowResultForm;
 
 const styles = StyleSheet.create({
   container: {
@@ -207,7 +170,7 @@ const styles = StyleSheet.create({
     fontStyle: "italic",
   },
   textInput: {
-    fontFamily: "Montserrat-BoldItalic",
+    fontFamily: "Montserrat-Regular",
     height: hp(5),
     borderColor: "gray",
     borderWidth: 0.5,

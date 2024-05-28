@@ -62,4 +62,12 @@ export default {
   results: "Results",
   background: "Background",
   AimsAndObjectives: "Aims and Objectives",
+  signInForm: "Sign In Form",
+  User: "User",
+  Password: "Password",
+  UserName: "Username",
+  SignIn: "Sign In",
+  Admin: "Admin",
+  incorrectCredentials: "The user name and password are incorrect",
+  loginSuccessMsg: 'Success", "You have successfully logged in!',
 };

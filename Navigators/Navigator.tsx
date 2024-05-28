@@ -18,6 +18,8 @@ import { useTranslator } from "../utils/localization/TranslatorContext";
 import CustomDrawerContent from "./CustomDrawerContent";
 import { StyleSheet, Text } from "react-native";
 import { Dimensions } from "react-native";
+import Admin from "../Screens/Admin/Admin";
+import AdminHome from "../Screens/Admin/AdminHome";
 const width = Dimensions.get("screen").width;
 const isTablet = width >= 768;
 
@@ -36,6 +38,23 @@ const CustomDrawerLabel = ({ label, focused }) => {
     <Text style={focused ? styles.drawerActiveLabel : styles.drawerLabel}>
       {label}
     </Text>
+  );
+};
+
+const AdminStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="Admin"
+        component={Admin}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="AdminHome"
+        component={AdminHome}
+      />
+    </Stack.Navigator>
   );
 };
 
@@ -89,7 +108,7 @@ const DrawerNavigator = () => {
         drawerActiveTintColor: "#207EB5",
       }}
     >
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Home"
         options={{
           drawerLabel: ({ focused }) => (
@@ -107,8 +126,8 @@ const DrawerNavigator = () => {
           ),
         }}
         component={Home}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Nazam ul Madaras"
         options={{
           drawerLabel: ({ focused }) => (
@@ -126,8 +145,8 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Provincial offices"
         options={{
           drawerLabel: ({ focused }) => (
@@ -145,7 +164,7 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
+      /> */}
       <Drawer.Screen
         name="Results"
         options={{
@@ -161,6 +180,20 @@ const DrawerNavigator = () => {
         component={ResultStack}
       />
       <Drawer.Screen
+        name="admin"
+        options={{
+          drawerLabel: ({ focused }) => (
+            <CustomDrawerLabel label={i18n.t("Admin")} focused={focused} />
+          ),
+
+          headerTitle: () => <CustomHeaderTitle title={i18n.t("Admin")} />,
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person" size={size} color={color} />
+          ),
+        }}
+        component={AdminStack}
+      />
+      {/* <Drawer.Screen
         name="Downloads"
         options={{
           drawerLabel: ({ focused }) => (
@@ -173,9 +206,9 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
+      /> */}
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Background"
         options={{
           drawerLabel: ({ focused }) => (
@@ -188,9 +221,9 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
+      /> */}
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Aims"
         options={{
           drawerLabel: ({ focused }) => (
@@ -208,8 +241,8 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
-      <Drawer.Screen
+      /> */}
+      {/* <Drawer.Screen
         name="Contact"
         options={{
           drawerLabel: ({ focused }) => (
@@ -222,7 +255,7 @@ const DrawerNavigator = () => {
           ),
         }}
         component={ResultStack}
-      />
+      /> */}
     </Drawer.Navigator>
   );
 };
