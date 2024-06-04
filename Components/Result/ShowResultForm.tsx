@@ -14,9 +14,9 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Dropdown } from "react-native-element-dropdown";
-import { useTranslator } from "../utils/localization/TranslatorContext";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 
-import CustomAlert from "./CustomAlert";
+import CustomAlert from "./../CustomAlert";
 
 const ShowResultForm = ({ onSubmit, loading }) => {
   const { i18n } = useTranslator();
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     marginBottom: hp(2),
   },
   button: {
-    backgroundColor: "blue",
+    backgroundColor: "#0056b3",
     padding: hp(1.5),
     borderRadius: 8,
     alignItems: "center",

@@ -1,6 +1,6 @@
 import React from "react";
 import { I18nManager, StyleSheet, Text, View } from "react-native";
-import { useTranslator } from "../utils/localization/TranslatorContext";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -71,12 +71,12 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Bold",
     // fontWeight: "bold",
     marginBottom: hp(1),
-    color: "#000000",
+    color: "#ffffff",
   },
   rankStyle: {
     borderRadius: 10,
     borderWidth: 2,
-    borderColor: "black",
+    borderColor: "#ffffff",
     padding: wp(1),
     marginBottom: hp(1),
   },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontSize: hp(2),
     fontFamily: "Montserrat-Bold",
     textAlign: "center",
-    color: "#000000",
+    color: "#ffffff",
   },
   row: {
     flexDirection: "row",
@@ -96,27 +96,28 @@ const styles = StyleSheet.create({
     flexDirection: "row-reverse", // Reverse the row direction for RTL languages
   },
   bold: {
-    fontFamily: "Montserrat-Bold",
+    fontFamily: "Montserrat-Black",
     fontSize: hp(2),
+    color: "#ffffff",
   },
   values: {
-    fontFamily: "Montserrat-Regular",
+    fontFamily: "Montserrat-Bold",
     fontSize: hp(2),
   },
   rollNoRegistrationNo: {
     borderWidth: 1,
-    borderColor: "#000",
+    borderColor: "#fff",
     borderRadius: 5,
     marginBottom: hp(1),
   },
   rollNoRow: {
     flexDirection: "row",
     borderBottomWidth: 1,
-    borderBottomColor: "#000",
+    borderBottomColor: "#fff",
   },
   regNoRow: {
     flexDirection: "row",
-    borderBottomColor: "#000",
+    borderBottomColor: "#fff",
   },
   cell: {
     flex: 1,
@@ -125,11 +126,11 @@ const styles = StyleSheet.create({
   },
   border: {
     borderRightWidth: 1,
-    borderRightColor: "#000",
+    borderRightColor: "#fff",
   },
   borderReverse: {
     borderLeftWidth: 1,
-    borderLeftColor: "#000",
+    borderLeftColor: "#fff",
   },
 });
 export default ResultHeader;

@@ -11,15 +11,14 @@ import {
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Home from "../Screens/Home";
-import ResultPage from "../Screens/ResultPage";
-import ResultForm from "../Screens/ResultForm";
+import ResultPage from "../Screens/Result/ResultPage";
+import ResultForm from "../Screens/Result/ResultForm";
 import { useTranslator } from "../utils/localization/TranslatorContext";
 import CustomDrawerContent from "./CustomDrawerContent";
 import { StyleSheet, Text } from "react-native";
 import { Dimensions } from "react-native";
 import Admin from "../Screens/Admin/Admin";
-import AdminHome from "../Screens/Admin/AdminHome";
+import AdminHomeStack from "./AdminHomeStack";
 const width = Dimensions.get("screen").width;
 const isTablet = width >= 768;
 
@@ -51,8 +50,8 @@ const AdminStack = () => {
       />
       <Stack.Screen
         options={{ headerShown: false }}
-        name="AdminHome"
-        component={AdminHome}
+        name="AdminHomeStack"
+        component={AdminHomeStack}
       />
     </Stack.Navigator>
   );

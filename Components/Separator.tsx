@@ -5,12 +5,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-const Separator = () => {
+const Separator = ({ color }) => {
   return (
     <View style={styles.separatorContainer}>
-      <View style={styles.line} />
-      <Ionicons name="settings" size={20} color="#0056b3" />
-      <View style={styles.line} />
+      <View style={[styles.line, { backgroundColor: color }]} />
+      <Ionicons name="settings" size={20} color={color} />
+      <View style={[styles.line, { backgroundColor: color }]} />
     </View>
   );
 };
@@ -19,12 +19,11 @@ const styles = StyleSheet.create({
   separatorContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginVertical: hp(2),
+    marginTop: hp(2),
   },
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: "#0056b3",
   },
   icon: {
     width: 20,

@@ -13,9 +13,9 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import ResultTable from "../Components/ResultTable";
-import ResultHeader from "../Components/ResultHeader";
-import { useTranslator } from "../utils/localization/TranslatorContext";
+import ResultTable from "../../Components/Result/ResultTable";
+import ResultHeader from "../../Components/Result/ResultHeader";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 
 const Results = ({ route }) => {
   const { responseData } = route.params;
@@ -87,13 +87,13 @@ const Results = ({ route }) => {
   return (
     <View style={styles.backgroundContainer}>
       <Image
-        source={require("../assets/Markaz1.jpg")}
+        source={require("../../assets/adminbg.jpg")}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
       <ScrollView style={styles.container}>
         <Image
-          source={require("../assets/header_rollnoslip.png")}
+          source={require("../../assets/header_rollnosliprb.png")}
           style={styles.image}
           resizeMode="contain"
         />
@@ -161,6 +161,7 @@ const styles = StyleSheet.create({
   noteText: {
     fontFamily: "Montserrat-BoldItalic",
     fontSize: hp(2),
+    color: "#fff",
   },
   websitePrintResultContainer: {
     flexDirection: "row",
@@ -173,6 +174,7 @@ const styles = StyleSheet.create({
   printText: {
     fontFamily: "Montserrat-BoldItalic",
     fontSize: hp(1.5),
+    color: "#fff",
   },
   button: {
     backgroundColor: "#99D1AA",
@@ -197,6 +199,7 @@ const styles = StyleSheet.create({
   controllerText: {
     fontSize: hp(2),
     fontFamily: "Montserrat-Bold",
+    color: "#fff",
   },
 });
 

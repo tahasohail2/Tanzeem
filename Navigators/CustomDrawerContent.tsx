@@ -29,8 +29,8 @@ const CustomDrawerContent = (props) => {
         />
       </View>
       <DrawerItemList {...props} />
-      <View style={styles.separator} />
-      <View
+      {/* <View style={styles.separator} /> */}
+      {/* <View
         style={[
           styles.languageContainer,
           {
@@ -41,8 +41,8 @@ const CustomDrawerContent = (props) => {
       >
         <Ionicons name="language" size={24} color="#636769" />
         <Text style={styles.languageHeading}>{i18n.t("language")}</Text>
-      </View>
-      <View style={styles.dropdownContainer}>
+      </View> */}
+      {/* <View style={styles.dropdownContainer}>
         <Dropdown
           style={[styles.dropdown]}
           labelField="label"
@@ -55,7 +55,7 @@ const CustomDrawerContent = (props) => {
           value={selectedLanguage}
           onChange={(item) => handleLanguageChange(item.value)}
         />
-      </View>
+      </View> */}
     </DrawerContentScrollView>
   );
 };

@@ -1,69 +1,38 @@
 import React, { useState } from "react";
 import {
   View,
+  TextInput,
+  TouchableOpacity,
   StyleSheet,
-  Image,
-  SafeAreaView,
   Text,
+  ScrollView,
+  ActivityIndicator,
   Alert,
+  SafeAreaView,
+  Image,
 } from "react-native";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 import AdminLoginForm from "../../Components/Admin/AdminLoginForm";
 import Separator from "../../Components/Separator";
-import { useTranslator } from "../../utils/localization/TranslatorContext";
-import { useNavigation } from "@react-navigation/native";
+import CreateNewUserForm from "../../Components/Admin/CreateNewUserForm";
+import UserTable from "../../Components/Admin/UserTable";
+import { useHeaderHeight } from "@react-navigation/elements";
 
-const Admin: React.FC = () => {
-  const navigation = useNavigation();
-  const [loading, setLoading] = useState(false);
+const AdminLoginAccounts = () => {
   const { i18n } = useTranslator();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const headerHeight = useHeaderHeight();
+  const isRTL = i18n.locale === "ur";
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const dummyCredentials = {
-    username: "admin",
-    password: "password123",
-  };
-
-  const handleUsernameChange = (text) => {
-    setUsername(text);
-    setError("");
-  };
-
-  const handlePasswordChange = (text) => {
-    setPassword(text);
-    setError("");
-  };
-
-  const handleFormSubmit = () => {
-    if (!username.trim() || !password.trim()) {
-      setError(i18n.t("fillFieldsAlert"));
-      return;
-    }
-
-    if (
-      username !== dummyCredentials.username ||
-      password !== dummyCredentials.password
-    ) {
-      setError(i18n.t("incorrectCredentials"));
-      return;
-    }
-
-    setLoading(true);
-
-    setTimeout(() => {
-      setLoading(false);
-      Alert.alert(i18n.t("loginSuccessMsg"));
-      navigation.navigate("AdminHomeStack");
-    }, 1000);
-  };
-
   return (
-    <SafeAreaView style={styles.backgroundContainer}>
+    <SafeAreaView
+      style={[styles.backgroundContainer, { paddingTop: headerHeight }]}
+    >
       <Image
         source={require("../../assets/adminbg.jpg")}
         style={styles.backgroundImage}
@@ -72,18 +41,13 @@ const Admin: React.FC = () => {
 
       <View style={styles.form}>
         <View style={styles.formContainer}>
-          <Text style={styles.formHeading}>{i18n.t("signInForm")}</Text>
+          <Text style={styles.formHeading}>{i18n.t("createNewUser")}</Text>
           <Separator color="#0056b3" />
-          <AdminLoginForm
-            loading={loading}
-            error={error}
-            handleUsernameChange={handleUsernameChange}
-            handlePasswordChange={handlePasswordChange}
-            handleFormSubmit={handleFormSubmit}
-            username={username}
-            password={password}
-          />
+          <CreateNewUserForm loading={loading} error={error} />
         </View>
+      </View>
+      <View style={styles.form}>
+        <UserTable />
       </View>
     </SafeAreaView>
   );
@@ -92,7 +56,7 @@ const Admin: React.FC = () => {
 const styles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     alignItems: "center",
     width: wp(100),
     height: hp(100),
@@ -103,6 +67,7 @@ const styles = StyleSheet.create({
     height: hp(100),
     position: "absolute",
   },
+  userTable: {},
   form: {
     alignSelf: "center",
     marginTop: hp(2),
@@ -134,7 +99,7 @@ const styles = StyleSheet.create({
   formHeading: {
     fontSize: hp(2.5),
     textAlign: "center",
-    color: "#0056b3",
+    color: "#000000",
     fontFamily: "Montserrat-Bold",
   },
   formContainer: {
@@ -144,4 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Admin;
+export default AdminLoginAccounts;

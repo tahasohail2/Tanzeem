@@ -13,18 +13,10 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import { useTranslator } from "../utils/localization/TranslatorContext";
-import CustomAlert from "./CustomAlert";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
+import CustomAlert from "../CustomAlert";
 
-const AdminLoginForm = ({
-  loading,
-  username,
-  handleUsernameChange,
-  password,
-  handlePasswordChange,
-  error,
-  handleFormSubmit,
-}) => {
+const CreateNewUserForm = ({ loading, error }) => {
   const { i18n } = useTranslator();
   const isRTL = i18n.locale === "ur";
 
@@ -36,31 +28,31 @@ const AdminLoginForm = ({
           style={[styles.textInput, { textAlign: isRTL ? "right" : "left" }]}
           placeholder={i18n.t("UserName")}
           placeholderTextColor="#aaa"
-          value={username}
-          onChangeText={handleUsernameChange}
+          //   value={username}
+          //   onChangeText={handleUsernameChange}
         />
       </View>
       <View style={styles.inputContainer}>
         <Text style={styles.labelText}>{i18n.t("Password")}</Text>
         <TextInput
           style={[styles.textInput, { textAlign: isRTL ? "right" : "left" }]}
-          placeholderTextColor="#aaa"
           placeholder={i18n.t("Password")}
+          placeholderTextColor="#aaa"
           secureTextEntry
-          value={password}
-          onChangeText={handlePasswordChange}
+          //   value={password}
+          //   onChangeText={handlePasswordChange}
         />
       </View>
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <TouchableOpacity
         style={styles.button}
-        onPress={handleFormSubmit}
-        disabled={loading}
+        // onPress={handleFormSubmit}
+        // disabled={loading}
       >
         {loading ? (
           <ActivityIndicator size="small" color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>{i18n.t("SignIn")}</Text>
+          <Text style={styles.buttonText}>{i18n.t("createUser")}</Text>
         )}
       </TouchableOpacity>
     </ScrollView>
@@ -70,8 +62,10 @@ const AdminLoginForm = ({
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    paddingHorizontal: wp(2),
-    paddingTop: hp(2),
+    // paddingHorizontal: wp(2),
+    // paddingTop: hp(2),
+    paddingVertical: hp(1),
+    paddingHorizontal: hp(3),
   },
   inputContainer: {
     marginBottom: hp(2),
@@ -80,12 +74,12 @@ const styles = StyleSheet.create({
     fontSize: hp(2),
     fontFamily: "Montserrat-Bold",
     marginBottom: hp(1),
-    color: "#0056b3",
+    color: "#000000",
   },
   textInput: {
     fontFamily: "Montserrat-Regular",
     height: hp(5),
-    borderColor: "#0056b3",
+    borderColor: "#D3D3D3",
     borderWidth: 1,
     borderRadius: 5,
     paddingHorizontal: wp(2),
@@ -93,7 +87,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#0056b3",
-    paddingVertical: hp(1.5),
+    paddingVertical: hp(1.3),
     borderRadius: 8,
     alignItems: "center",
   },
@@ -111,4 +105,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AdminLoginForm;
+export default CreateNewUserForm;

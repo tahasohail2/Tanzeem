@@ -4,12 +4,12 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
-import ShowResultForm from "../Components/ShowResultForm";
+import ShowResultForm from "../../Components/Result/ShowResultForm";
 import { Dropdown } from "react-native-element-dropdown";
-import { useTranslator } from "../utils/localization/TranslatorContext";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
-import baseURL from "../api/api";
+import baseURL from "../../api/api";
 
 function Home() {
   const navigation = useNavigation();
@@ -39,7 +39,7 @@ function Home() {
   return (
     <View style={styles.backgroundContainer}>
       <Image
-        source={require("../assets/Markaz1.jpg")}
+        source={require("../../assets/adminbg.jpg")}
         style={styles.backgroundImage}
         resizeMode="cover"
       />
@@ -47,7 +47,7 @@ function Home() {
       <SafeAreaView style={styles.container}>
         <View style={styles.insideContainer}>
           <Image
-            source={require("../assets/logo.png")}
+            source={require("../../assets/logo.png")}
             style={styles.image}
             resizeMode="contain"
           />
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     fontFamily: "Montserrat-Bold",
   },
   formHeadingContainer: {
-    backgroundColor: "#207EB5",
+    backgroundColor: "#0056b3",
     padding: hp(2),
     borderTopLeftRadius: 12,
     borderTopRightRadius: 12,

@@ -4,7 +4,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { StyleSheet, Text, View } from "react-native";
-import { useTranslator } from "../utils/localization/TranslatorContext";
+import { useTranslator } from "../../utils/localization/TranslatorContext";
 
 const ReactTable = ({ data }) => {
   const { i18n } = useTranslator();
@@ -55,7 +55,7 @@ const ReactTable = ({ data }) => {
 const styles = StyleSheet.create({
   table: {
     borderWidth: 1,
-    borderColor: "#000",
+    borderColor: "#fff",
     borderRadius: 5,
   },
   lastRow: {
@@ -64,13 +64,15 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     borderBottomWidth: 1,
-    borderBottomColor: "#000",
+    borderBottomColor: "#fff",
   },
   rowReverse: {
     flexDirection: "row-reverse",
   },
   header: {
-    backgroundColor: "#99D1AA",
+    backgroundColor: "#0056b3",
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
   },
   headerText: {
     flex: 1,
@@ -78,13 +80,15 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(1),
     textAlign: "center",
     fontFamily: "Montserrat-Bold",
+    color: "#fff",
   },
   cell: {
     flex: 1,
-    fontFamily: "Montserrat-Regular",
+    fontFamily: "Montserrat-Bold",
     paddingVertical: hp(1),
     paddingHorizontal: wp(1),
     textAlign: "center",
+    color: "#fff",
   },
   subjects: {
     flex: 2, // Adjust the flex value to increase the width
